@@ -2,6 +2,14 @@
 
 Proxy for HIV orderly setup
 
+## Usage
+
+This is designed to work with [orderly-web-deploy](https://github.com/vimc/orderly-web-deploy/)
+
+```
+docker run --name proxy --network network mrcide/hiv-orderly-proxy:latest example.com 80 443 service
+```
+
 ## Update patch
 
 * Copy and modify https://github.com/reside-ic/proxy-nginx/blob/master/nginx.conf to match your required config

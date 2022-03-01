@@ -1,5 +1,7 @@
 FROM reside/proxy-nginx:latest
 
+COPY bin /usr/local/bin
+
 RUN apt-get update && apt-get install -y patch
 
 COPY nginx.conf.patch /etc/nginx/nginx.conf.patch
