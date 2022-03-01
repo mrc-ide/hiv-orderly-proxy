@@ -8,8 +8,8 @@
 -            proxy_pass http://${SERVICE}/;
 +        location /naomi/ {
 +            rewrite ^/naomi/(.*) /$1 break;
-+            proxy_pass http://orderly_web_web:8888;
-+            proxy_redirect http://orderly_web_web:8888/ /naomi/;
++            proxy_pass http://naomi_web:8888;
++            proxy_redirect http://naomi_web:8888/ /naomi/;
 +        }
 +        location /fertility/ {
 +            rewrite ^/fertility/(.*) /$1 break;
