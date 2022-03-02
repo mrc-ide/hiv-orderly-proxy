@@ -1,0 +1,25 @@
+--- nginx.conf	2022-02-23 14:30:39.145780835 +0000
++++ nginx.conf_patched	2022-02-23 14:40:47.226983727 +0000
+@@ -74,8 +74,20 @@
+
+         root /usr/share/nginx/html;
+
+-        location / {
+-            proxy_pass http://${SERVICE}/;
++        location /naomi/ {
++            rewrite ^/naomi/(.*) /$1 break;
++            proxy_pass http://naomi_web:8888;
++            proxy_redirect http://naomi_web:8888/ /naomi/;
++        }
++
++        # resolving /fertility/ dynamically because the orderly web container may not
++        # be up when the proxy starts, see https://tenzer.dk/nginx-with-dynamic-upstreams/
++        set $fertility http://fertility_web:8881;
++        location /fertility/ {
++            resolver 127.0.0.11 valid=30s;
++            rewrite ^/fertility/(.*) /$1 break;
++            proxy_pass $fertility;
++            proxy_redirect http://fertility_web:8881/ /fertility/;
+         }
+     }
+
