@@ -14,12 +14,12 @@
 +
 +        # resolving /fertility/ dynamically because the orderly web container may not
 +        # be up when the proxy starts, see https://tenzer.dk/nginx-with-dynamic-upstreams/
-+        set $fertility http://fertility_orderly:8881;
++        set $fertility http://fertility_web:8881;
 +        location /fertility/ {
 +            resolver 127.0.0.11 valid=30s;
 +            rewrite ^/fertility/(.*) /$1 break;
 +            proxy_pass $fertility;
-+            proxy_redirect http://fertility_orderly:8881/ /fertility/;
++            proxy_redirect http://fertility_web:8881/ /fertility/;
          }
      }
 
