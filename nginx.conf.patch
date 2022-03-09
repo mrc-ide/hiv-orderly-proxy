@@ -24,7 +24,7 @@
 +
 +        # resolving /threemc/ dynamically because the orderly web container may not
 +        # be up when the proxy starts, see https://tenzer.dk/nginx-with-dynamic-upstreams/
-+        set $threemc http://threemc_web:8881;
++        set $threemc http://threemc_web:8882;
 +        location /threemc/ {
 +            resolver 127.0.0.11 valid=30s;
 +            rewrite ^/threemc/(.*) /$1 break;
