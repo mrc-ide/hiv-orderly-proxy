@@ -30,6 +30,16 @@
 +            rewrite ^/threemc/(.*) /$1 break;
 +            proxy_pass $threemc;
 +            proxy_redirect http://threemc_web:8882/ /threemc/;
++        }
++
++        # resolving /inference-data/ dynamically because the orderly web container may not
++        # be up when the proxy starts, see https://tenzer.dk/nginx-with-dynamic-upstreams/
++        set $inference_data http://infernce_data_web:8881;
++        location /inference-data/ {
++            resolver 127.0.0.11 valid=30s;
++            rewrite ^/inference-data/(.*) /$1 break;
++            proxy_pass $inference_data;
++            proxy_redirect http://inference_data_web:8881/ /inference-data/;
          }
      }
 
