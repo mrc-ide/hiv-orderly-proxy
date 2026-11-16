@@ -22,7 +22,7 @@ jobs:
       - uses: docker/metadata-action@v5
         id: meta
         with:
-          images: ghcr.io/reside-ic/hiv-orderly-proxy
+          images: ghcr.io/mrc-ide/hiv-orderly-proxy
           tags: |
             type=sha,prefix=,format=short
             type=ref,event=branch,prefix=${{ github.ref_name == 'latest' && 'branch-' || '' }}
