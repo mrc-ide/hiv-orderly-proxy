@@ -1,4 +1,4 @@
-FROM reside/proxy-nginx:latest
+FROM ghcr.io/reside-ic/proxy-nginx:latest
 
 COPY bin /usr/local/bin
 
