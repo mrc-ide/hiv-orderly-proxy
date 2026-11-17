@@ -7,7 +7,7 @@ Proxy for HIV orderly setup
 This is designed to work with [orderly-web-deploy](https://github.com/vimc/orderly-web-deploy/)
 
 ```
-docker run --name proxy --network network mrcide/hiv-orderly-proxy:latest example.com 80 443 service
+docker run --name proxy --network network ghcr.io/mrc-ide/hiv-orderly-proxy:latest example.com 80 443 service
 ```
 
 ## Update patch
